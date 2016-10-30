@@ -1,0 +1,28 @@
+{% extends 'borsa/base.html' %}
+{% load i18n %}
+{% block content %}
+		{% for car in cars %}
+<div class="panel panel-default cbc">
+  <div class="panel-body">
+<div class="media">
+  <div class="media-left media-middle">
+    <a href="car/{{ car.pk }}/view/">
+	{{ mainphoto.image.url }}
+      <img class="media-object tmbpic" src="{{ car.images.all }}" alt="kola">
+    </a>
+  </div>
+  <div class="media-body">
+    <a href="car/{{ car.pk }}/view/"><h4 class="media-heading">{{ car.make }} {{ car.model }}</a><span class="pull-right price">{{ car.price }}</span></h4>
+{% trans "Engine:" %} <kbd>{{ car.engine }}</kbd> | 
+{% trans "Gearbox:" %} <kbd>{{ car.gearbox }}</kbd> | 
+{% trans "Condition:" %} <code>{{ car.condition }}</code> | 
+{% trans "Year produced:" %} {{ car.year }} |  
+{% trans "Mileage:" %}{{ car.probeg }} | 
+{% trans "Color:" %} {{ car.color }} | <br/>
+{% trans "Region:" %} {{car.region }}
+  </div>
+</div>
+  </div>
+</div>
+		{% endfor %}
+{% endblock %}

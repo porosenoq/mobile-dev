@@ -1,0 +1,155 @@
+{% extends 'borsa/base.html' %}
+{% block content %}
+{% load staticfiles %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% trans "Horse power" as hptag %}
+<script   src="http://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+<script src="{% static 'smart-selects/admin/js/chainedfk.js' %}"></script>
+<form method="POST" class="form-horizontal">{% csrf_token %}
+
+<div class="panel panel-default cbc">
+  <!-- Default panel contents -->
+	<div class="panel-heading">{% trans "Add new car" %}</div>
+		<div class="panel-body">
+			<p>{% trans "Enter your car details below:" %}</p>
+			<div class="row">
+				<div class="col-sm-4">
+                                        <div class="row">
+                                                <div class="col-sm-3">{{ form.make.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.make|add_class:"fcc" }}</div>
+                                        </div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.engine.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.engine|add_class:"fcc" }}</div>
+                                        </div>
+					<div class="row mt">
+						<div class="col-sm-3">{{ form.color.label_tag }}</div>
+						<div class="col-sm-9">{{ form.color|add_class:"fcc" }}</div>
+					</div>
+					<div class="row mt">
+						<div class="col-sm-3">{{ form.condition.label_tag }}</div>
+						<div class="col-sm-9">{{ form.condition|add_class:"fcc" }}</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-sm-3">{{ form.model.label_tag }}</div>
+						<div class="col-sm-9">{{ form.model|add_class:"fcc" }}</div>
+					</div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.gearbox.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.gearbox|add_class:"fcc" }}</div>
+                                        </div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.year.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.year|add_class:"fcc" }}</div>
+                                        </div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.probeg.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.probeg|add_class:"fcc" }}</div>
+                                        </div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="row">
+                                                <div class="col-sm-3">Modifikaciq: </div>
+                                                <div class="col-sm-9">{{ form.probeg|add_class:"fcc" }}</div>
+					</div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.hp.label_tag }}</div>
+                                                <div class="col-sm-9">{% render_field form.hp placeholder=hptag class+="fcc" %}</div>
+                                        </div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.price.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.price|add_class:"fcc" }}</div>
+                                        </div>
+                                        <div class="row mt">
+                                                <div class="col-sm-3">{{ form.region.label_tag }}</div>
+                                                <div class="col-sm-9">{{ form.region|add_class:"fcc" }}</div>
+                                        </div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="col-sm-4 tc">bezopasnost</div><div class="col-sm-4 tc">komfort</div><div class="col-sm-4 tc">drugi</div>
+			</div>
+			<div class="row mt">
+				<div class="col-sm-4">
+					<div class="col-sm-12 cb">{{ form.gps }} {{ form.gps.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.trc }} {{ form.trc.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.afl }} {{ form.afl.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.abs }} {{ form.abs.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.airbagf }} {{ form.airbagf.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.airbagr }} {{ form.airbagr.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.airbags }} {{ form.airbags.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.ebd }} {{ form.ebd.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.esp }} {{ form.esp.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.tpc }} {{ form.tpc.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.parkingsensor }} {{ form.parkingsensor.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.dsa }} {{ form.dsa.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.dbs }} {{ form.asr.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.distronic }} {{ form.distronic.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.bas }} {{ form.bas.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.ass }} {{ form.ass.label_tag }}</div>
+				</div>
+                <div class="col-sm-4">
+					<div class="col-sm-12 cb">{{ form.bthf }} {{ form.bthf.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.dvdtv }} {{ form.dvdtv.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.usbaux }} {{ form.usbaux.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.steptip }} {{ form.steptip.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.airmatic }} {{ form.airmatic.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.keyless }} {{ form.keyless.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.diffblock }} {{ form.diffblock.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.boardpc }} {{ form.boardpc.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.lightsensor }} {{ form.lightsensor.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.elmirrors }} {{ form.elmirrors.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.elwindows }} {{ form.elwindows.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.elsuspension }} {{ form.elsuspension.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.elseats }} {{ form.elseats.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.elps }} {{ form.elps.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.acc }} {{ form.acc.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.mfv }} {{ form.mfv.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.navi }} {{ form.navi.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.swheat }} {{ form.swheat.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.pechka }} {{ form.pechka.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.fwheating }} {{ form.fwheating.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.seatsheating }} {{ form.seatsheating.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.swreg }} {{ form.swreg.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.rainsensor }} {{ form.rainsensor.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.servo }} {{ form.servo.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.hlwash }} {{ form.hlwash.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.ccontrol }} {{ form.ccontrol.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.audiosys }} {{ form.audiosys.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.dpf }} {{ form.dpf.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.accjabka }} {{ form.accjabka.label_tag }}</div>
+				</div>
+								
+                <div class="col-sm-4">
+					<div class="col-sm-12 cb">{{ form.integrale }} {{ form.integrale.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.sedemseats }} {{ form.sedemseats.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.barter }} {{ form.barter.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.lpg }} {{ form.lpg.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.crashed }} {{ form.crashed.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.lizing }} {{ form.lizing.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.metan }} {{ form.metan.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.forparts }} {{ form.forparts.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.obslujen }} {{ form.obslujen.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.novvnos }} {{ form.novvnos.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.registriran }} {{ form.registriran.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.serviznaknijka }} {{ form.serviznaknijka.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.tuning }} {{ form.tuning.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.dvevrati }} {{ form.dvevrati.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.chetirivrati }} {{ form.chetirivrati.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.ledfarove }} {{ form.ledfarove.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.ksenon }} {{ form.ksenon.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.aludjanti }} {{ form.aludjanti.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.metalic }} {{ form.metalic.label_tag }}</div>
+					<div class="col-sm-12 cb">{{ form.wipersheating }} {{ form.wipersheating.label_tag }}</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+</form>
+{% endblock %}

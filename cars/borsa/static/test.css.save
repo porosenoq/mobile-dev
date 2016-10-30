@@ -1,0 +1,24 @@
+.test {
+background-image: url('../static/images/gplaypattern.png');
+background-color: skyblue;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.smo
+{
+width: 64px;
+height: 64px;
+}
+
+.cbc
+{
+border-color: red;
+}
+
+.cbd
+{
+background-color: #f5f8fa;
+}
